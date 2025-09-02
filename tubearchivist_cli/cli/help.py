@@ -100,12 +100,3 @@ class Help:
             print(f"  {command_name} {method['name']:<12} - {method['description']}")
         
         print(f"\nUsage: python tube.py {command_name} <action>")
-        
-        command_info = self.commands[command_name]
-        print(f"{command_name.upper()} - {command_info['description']}")
-        print("=" * 50)
-        
-        for method in command_info['methods']:
-            print(f"  {command_name} {method['name']:<12} - {method['description']}")
-        
-        print(f"\nUsage: python tube.py {command_name} <action>")
