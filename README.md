@@ -1,6 +1,6 @@
 # TubeArchivist CLI
 
-A command-line interface for [TubeArchivist](https://github.com/tubearchivist/tubearchivist) that provides offline access to your archived YouTube content.
+A command-line interface for [TubeArchivist](https://github.com/tubearchivist/tubearchivist).
 
 ## Quick Start
 
