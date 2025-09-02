@@ -30,7 +30,7 @@ A command-line interface for [TubeArchivist](https://github.com/tubearchivist/tu
 
 - `config set` - Configure TubeArchivist connection
 - `sync all` - Download all data to local cache
-- `sync video/channel/playlist` - Sync specific data types
+- `sync videos/channels/playlists` - Sync specific data types
 - `stats` - View overview statistics
 - `stats videos/channels/playlists` - Detailed statistics
 - `help` - Show all available commands

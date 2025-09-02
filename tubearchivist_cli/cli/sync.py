@@ -13,7 +13,7 @@ class Sync:
         self.playlist_table = PlaylistTable()
         self.channel_table = ChannelTable()
 
-    def video(self):
+    def videos(self):
         """Sync all videos from TubeArchivist to local cache"""
         print("Syncing videos...")
         self.video_table.clear_table()
@@ -22,7 +22,7 @@ class Sync:
             self.video_table.add_video(video)
         print(f"Synced {len(videos)} videos to local cache.")
 
-    def playlist(self):
+    def playlists(self):
         """Sync all playlists from TubeArchivist to local cache"""
         print("Syncing playlists...")
         self.playlist_table.clear_table()
@@ -31,7 +31,7 @@ class Sync:
             self.playlist_table.add_playlist(playlist)
         print(f"Synced {len(playlists)} playlists to local cache.")
 
-    def channel(self):
+    def channels(self):
         """Sync all channels from TubeArchivist to local cache"""
         print("Syncing channels...")
         self.channel_table.clear_table()
@@ -43,7 +43,7 @@ class Sync:
     def all(self):
         """Sync all data (videos, playlists, channels) from TubeArchivist"""
         print("Syncing all data (videos, playlists, channels)...")
-        self.video()
-        self.playlist()
-        self.channel()
+        self.videos()
+        self.playlists()
+        self.channels()
         print("All data synced successfully.")
