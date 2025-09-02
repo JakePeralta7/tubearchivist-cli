@@ -46,6 +46,17 @@ def main():
             except ValueError as e:
                 print(f"Configuration error: {e}")
                 print("Please run 'config set' to configure the API connection.")
+        
+        case "stats":
+            from tubearchivist_cli.cli.stats import Stats
+            stats = Stats()
+            if action:
+                if hasattr(stats, action):
+                    getattr(stats, action)()
+                else:
+                    print(f"Invalid stats action: {action}")
+            else:
+                stats.overview()
                 
         case "help":
             from tubearchivist_cli.cli.help import Help
