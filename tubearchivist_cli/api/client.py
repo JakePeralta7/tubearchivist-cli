@@ -89,6 +89,29 @@ class TubeArchivistAPI:
         
         logger.info(f"Retrieved {len(all_videos)} total videos")
         return all_videos
+    
+    def redownload_video(self, video_id: str) -> bool:
+        """Trigger redownload of a specific video"""
+        try:
+            # Use the correct API format as shown in browser dev tools
+            data = {
+                "data": [
+                    {
+                        "youtube_id": video_id,
+                        "status": "pending"
+                    }
+                ]
+            }
+            response = self.session.post(
+                urljoin(self.base_url, '/api/download/?autostart=true&force=true'),
+                json=data
+            )
+            response.raise_for_status()
+            logger.info(f"Successfully queued video {video_id} for redownload")
+            return True
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Failed to queue video {video_id} for redownload: {e}")
+            return False
 
     def get_playlists(self, page: int = 1, page_size: int = 25) -> Optional[Dict]:
         """Get playlists from TubeArchivist"""

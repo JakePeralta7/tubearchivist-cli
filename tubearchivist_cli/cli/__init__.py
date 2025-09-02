@@ -47,6 +47,31 @@ def main():
                 print(f"Configuration error: {e}")
                 print("Please run 'config set' to configure the API connection.")
         
+        case "redownload":
+            from tubearchivist_cli.api.client import TubeArchivistAPI
+            from tubearchivist_cli.cli.redownload import Redownload
+            try:
+                client = TubeArchivistAPI()
+                if client.test_connection():
+                    redownload = Redownload()
+                    if action == "resolution":
+                        # Get the resolution argument
+                        resolution = args[2] if len(args) > 2 else None
+                        redownload.resolution(resolution)
+                    elif action:
+                        if hasattr(redownload, action):
+                            getattr(redownload, action)()
+                        else:
+                            print(f"Invalid redownload action: {action}")
+                    else:
+                        from tubearchivist_cli.cli.help import Help
+                        Help().show_command("redownload")
+                else:
+                    raise ConnectionError("Failed to connect to the API.")
+            except ValueError as e:
+                print(f"Configuration error: {e}")
+                print("Please run 'config set' to configure the API connection.")
+        
         case "stats":
             from tubearchivist_cli.cli.stats import Stats
             stats = Stats()
