@@ -91,6 +91,30 @@ def main():
             else:
                 help_system.show()
                 
+        case "search":
+            from tubearchivist_cli.cli.search import Search
+            search = Search()
+            if action == "videos":
+                # Get the search query argument
+                query = " ".join(args[2:]) if len(args) > 2 else None
+                search.videos(query)
+            elif action == "channels":
+                query = " ".join(args[2:]) if len(args) > 2 else None
+                search.channels(query)
+            elif action == "playlists":
+                query = " ".join(args[2:]) if len(args) > 2 else None
+                search.playlists(query)
+            elif action == "all":
+                query = " ".join(args[2:]) if len(args) > 2 else None
+                search.all(query)
+            elif action:
+                # If action is provided but not recognized, treat it as a search query for all content
+                query = " ".join(args[1:])
+                search.all(query)
+            else:
+                from tubearchivist_cli.cli.help import Help
+                Help().show_command("search")
+        
         case _:
             print(f"Invalid command: {command}")
             from tubearchivist_cli.cli.help import Help

@@ -38,6 +38,13 @@ A command-line interface for [TubeArchivist](https://github.com/tubearchivist/tu
 - `sync channels` - Sync only channels  
 - `sync playlists` - Sync only playlists
 
+### Search Content
+- `search all <query>` - Search across all content types (videos, channels, playlists)
+- `search videos <query>` - Search videos by title, description, or tags
+- `search channels <query>` - Search channels by name or description
+- `search playlists <query>` - Search playlists by name or description
+- `search <query>` - Shortcut for searching all content
+
 ### Statistics
 - `stats` - View overview statistics
 - `stats videos` - Detailed video statistics
