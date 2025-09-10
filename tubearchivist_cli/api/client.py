@@ -1,6 +1,7 @@
 import logging
 import requests
 from urllib.parse import urljoin
+import urllib3
 from tubearchivist_cli.cli.config import Config
 from typing import Dict, List, Optional
 
@@ -17,6 +18,8 @@ class TubeArchivistAPI:
                 'Content-Type': 'application/json'
             }
             self.session = requests.Session()
+            self.session.verify = False
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
             self.session.headers.update(self.headers)
         else:
             raise ValueError("API not configured")
